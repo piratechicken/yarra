@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const authMiddleware = require('./middleware/auth')
 // const cors = require('cors')
 
 const server = express()
@@ -14,6 +15,7 @@ const server = express()
 
 //  Middleware
 server.use(bodyParser.json())
+server.use(authMiddleware.initialize)
 
 server.use([
   require('./routes/products'),
