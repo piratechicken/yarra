@@ -14,4 +14,5 @@ router.get('/products', authMiddleware.requireJWT, (req, res) => {
     })
 })
 
+
 module.exports = router 
