@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(passportLocalMongoose, {
   usernameField: 'email',
-  userNameLowerCase: true, // Ensure that all emails are lowercase
+  usernameLowerCase: true, // Ensure that all emails are lowercase
   session: false // Disable sessions as we'll ue JWTs
 })
 
