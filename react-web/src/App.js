@@ -1,22 +1,37 @@
 import React, { Component } from 'react';
 import './App.css';
+import Header from './components/Header'
+import Welcome from './components/Welcome'
 import SignInForm from './components/SignInForm'
-import { signIn } from './api/auth'
+import SignUp from './components/SignUp'
+import ListProducts from './components/ListProducts'
+import { signUp, signIn, signOutNow } from './api/auth'
 import { listProducts } from './api/products'
 // import { setToken } from './api/init'
 import { getDecodedToken } from './api/token'
 
 class App extends Component {
   state = {
-    decodedToken: getDecodedToken() // Restore previous sign in data (if valid and not exp)
+    decodedToken: getDecodedToken(), // Restore previous sign in data (if valid and not exp)
+    products: [],
+    newUser: false
   }
 
-  onSignIn = ({ email, password }) => {
+  toggleNewUser = () => {
+    this.setState({ newUser: !this.state.newUser })
+  }
 
-    console.log('app received', { email, password })
+  onSignUp = ({ firstName, lastName, email, password }) => {
+    signUp({ firstName, lastName, email, password })
+      .then((decodedToken) => {
+        this.setState({ decodedToken })
+      })
+    }
+
+  onSignIn = ({ email, password }) => {
     signIn({ email, password })
       .then((decodedToken) => {
-        console.log('signed in', decodedToken)
+        // console.log('signed in', decodedToken)
         this.setState({ decodedToken })
         // const token = data.token
         // setToken(token)
@@ -30,23 +45,44 @@ class App extends Component {
       })
   }
 
+  onSignOut = () => {
+    signOutNow()
+    this.setState({ decodedToken: null })
+  }
+
+
+
   render() {
-    const { decodedToken } = this.state
+    const { decodedToken, products, newUser } = this.state
+    const signedIn = !!decodedToken
+
     return (
       <div className="App">
-        <h1>Yarra</h1>
-        <h2 className='mb-3'>Occasionally delivering 1 or 2 products</h2>
+        <Header />
         {
-          !!decodedToken ? (
+          signedIn ? (
             <div>
-              <p>Email: { decodedToken.email }</p>
-              <p>Signed in at: { new Date(decodedToken.iat *1000).toISOString() }</p>
-              <p>Expire at: { new Date(decodedToken.exp *1000).toISOString() }</p>
+              <Welcome 
+                decodedToken = { decodedToken }
+                onSignOut = { this.onSignOut }
+              />
+              <ListProducts 
+                products={ products }
+              />
             </div>
-          ) : (     
-            <SignInForm 
-              onSignIn={ this.onSignIn }
-            />
+          ) : ( 
+            newUser ? (
+              <SignUp 
+                onSignUp = { this.onSignUp}
+                toggleNewUser={ this.toggleNewUser }
+              />
+
+            ) : (
+              <SignInForm 
+                onSignIn={ this.onSignIn }
+                toggleNewUser={ this.toggleNewUser }
+                />
+            )
           )
         }
       </div>
@@ -56,7 +92,9 @@ class App extends Component {
   componentDidMount() {
     listProducts()
       .then((products) => {
-        console.log(products)
+        this.setState({
+          products: products
+        })
       })
       .catch((error) => {
         console.error('error loading products', error)

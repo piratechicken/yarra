@@ -17,11 +17,15 @@ body {
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: 1rem;
+  font-size: 1.3rem;
+}
+
+h3 {
+  font-size: 1.2rem;
 }
 
 label {
@@ -41,6 +45,39 @@ button {
 }
 button:hover {
   background-color: #ee8d6f;
+}
+
+.header {
+  width: 100%;
+  border-bottom: solid 1px black;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.welcome {
+  width: 100%;
+  border-bottom: solid 1px black;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.toggle-button {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  background-color: #ce7758;
+}
+
+.product-list {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  background-color: #ebad98;
+  padding: 1rem;
+}
+.product-list ul {
+  list-style-position: inside;
+  line-height: 150%;
 }
 
 .mb-1 { margin-bottom: 0.25rem }
