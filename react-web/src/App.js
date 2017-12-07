@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SignInForm from './components/SignInForm'
 
 class App extends Component {
+  onSignIn = ({ email, password }) => {
+    console.log('app received', { email, password })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Yarra</h1>
+        <h2 className='mb-3'>Occasionally delivering 1 or 2 products</h2>
+        <SignInForm 
+          onSignIn={ this.onSignIn }
+        />
       </div>
     );
   }
