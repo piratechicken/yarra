@@ -1,22 +1,32 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Product from './Product'
 
 const ListProducts = ({
-  products
+  products,
+  editedProductID,
+  onEditProduct,
+  onAddToWishlist,
+  renderEditForm
 }) => {
   return (
     <div className='product-list'>
       <h3 className='mb-2'>Available products:</h3>
-      <ul>
-      { 
-        products.map((product) => {
-          return (
-            <li key={ product._id }>
-              { product.brandName }: <a href={ `products/${product._id}` } >{ product.name }</a>
-            </li>
-          )
-        })
+      {
+        products.map((product) => (
+          <Fragment key={ product._id }>
+            <Product
+              {...product}
+              onAddToWishlist={ onAddToWishlist }
+              onEdit={ () => {
+                onEditProduct(product._id)
+              } }
+            />
+            { editedProductID === product._id &&
+              renderEditForm(product)
+            }
+          </Fragment>
+        ))
       }
-      </ul>
     </div>
   )
 }

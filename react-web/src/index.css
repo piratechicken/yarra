@@ -69,15 +69,38 @@ button:hover {
   background-color: #ce7758;
 }
 
+.wishlist-button {
+  padding: 0;
+  font-size: 0.5rem;
+  background-color: #ce7758;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
 .product-list {
   margin-top: 1rem;
   font-size: 0.8rem;
   background-color: #ebad98;
   padding: 1rem;
+  border-radius: 3px;
 }
-.product-list ul {
-  list-style-position: inside;
-  line-height: 150%;
+.product-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 200%;
+}
+
+.product-form {
+  margin-top: 1rem;
+  background-color: #e9bbab;
+  padding: 1rem;
+  border-radius: 3px;
+}
+
+.product-form label, input, button {
+  font-size: 0.7rem;
 }
 
 .mb-1 { margin-bottom: 0.25rem }

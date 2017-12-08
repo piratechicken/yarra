@@ -27,11 +27,12 @@ router.get('/products/:id', authMiddleware.requireJWT, (req, res) => {
     })
 })
 
+
+// brandName: req.body.brandName,
+// name: req.body.name
+
 router.post('/products', authMiddleware.requireJWT, (req, res) => {
-  Product.create({
-    brandName: req.body.brandName,
-    name: req.body.name
-  })
+  Product.create(req.body)
     .then((product) => {
       res.json(product)
     })
