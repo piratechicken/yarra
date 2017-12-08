@@ -11,7 +11,7 @@ const ListProducts = ({
         products.map((product) => {
           return (
             <li key={ product._id }>
-              { product.brandName }: { product.name }
+              { product.brandName }: <a href={ `products/${product._id}` } >{ product.name }</a>
             </li>
           )
         })

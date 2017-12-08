@@ -1,6 +1,9 @@
 GET http://localhost:7000/products
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpbW9uQHNpbW9uLmNvbSIsImlhdCI6MTUxMjUzNDY4NiwiZXhwIjoxNTEzMTM5NDg2LCJzdWIiOiI1YTI3NTBiNGUyNmM5ODFjMjUzNTAyY2EifQ.P1SDF7sgEnBZox6XtsDg5ZW4sMAwoOivRP7F4pDeFnw
 ###
+GET http://localhost:7000/products/5a2742b394dc6614a82c219b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpbW9uQHNpbW9uLmNvbSIsImlhdCI6MTUxMjUzNDY4NiwiZXhwIjoxNTEzMTM5NDg2LCJzdWIiOiI1YTI3NTBiNGUyNmM5ODFjMjUzNTAyY2EifQ.P1SDF7sgEnBZox6XtsDg5ZW4sMAwoOivRP7F4pDeFnw
+###
 POST http://localhost:7000/auth/register
 Content-Type: application/json
 
@@ -27,4 +30,22 @@ Content-Type: application/json
 {
   "email": "simon@simon.com",
   "password": "123456"
+}
+###
+POST http://localhost:7000/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpbW9uQHNpbW9uLmNvbSIsImlhdCI6MTUxMjUzNDY4NiwiZXhwIjoxNTEzMTM5NDg2LCJzdWIiOiI1YTI3NTBiNGUyNmM5ODFjMjUzNTAyY2EifQ.P1SDF7sgEnBZox6XtsDg5ZW4sMAwoOivRP7F4pDeFnw
+
+{
+  "brandName": "Sony",
+  "name": "Hifi stereo"
+}
+###
+PATCH http://localhost:7000/products/5a29bdf338042003d4ada6af
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpbW9uQHNpbW9uLmNvbSIsImlhdCI6MTUxMjUzNDY4NiwiZXhwIjoxNTEzMTM5NDg2LCJzdWIiOiI1YTI3NTBiNGUyNmM5ODFjMjUzNTAyY2EifQ.P1SDF7sgEnBZox6XtsDg5ZW4sMAwoOivRP7F4pDeFnw
+
+{
+  "brandName": "Sanyo",
+  "name": "Updated Hifi stereo"
 }

@@ -14,7 +14,8 @@ class App extends Component {
   state = {
     decodedToken: getDecodedToken(), // Restore previous sign in data (if valid and not exp)
     products: [],
-    newUser: false
+    activeProductId: null, // For viewing and editing an item
+    newUser: false // Whether to render sign in or sign up (toggles with button)
   }
 
   toggleNewUser = () => {
