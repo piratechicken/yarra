@@ -12,7 +12,8 @@ server.use(authMiddleware.initialize)
 
 server.use([
   require('./routes/products'),
-  require('./routes/auth')
+  require('./routes/auth'),
+  require('./routes/wishlist')
 ])
 
 server.listen(7000, (error) => {

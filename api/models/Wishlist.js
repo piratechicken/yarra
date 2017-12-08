@@ -1,7 +1,7 @@
 const mongoose = require('./init')
 const Schema = mongoose.Schema
 
-const WishlistSchema = new Schema ('Wishlist', {
+const WishlistSchema = new Schema({
   // Has one/belongs to user
   user: { type: Schema.ObjectId, ref: 'User', unique: true },
   // Has many products

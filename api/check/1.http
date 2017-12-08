@@ -49,3 +49,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpbW9uQ
   "brandName": "Sanyo",
   "name": "Updated Hifi stereo"
 }
+###
+GET http://localhost:7000/wishlist
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNpbW9uQHNpbW9uLmNvbSIsIm5hbWUiOiJTaW1vbiIsImlhdCI6MTUxMjY5NDYwMywiZXhwIjoxNTEzMjk5NDAzLCJzdWIiOiI1YTI3NTBiNGUyNmM5ODFjMjUzNTAyY2EifQ.jzx9kZS1tTbIWMz1ISZSY82Wd-l1AtUJECRrjTpZvjY
+###
