@@ -18,6 +18,7 @@ class App extends Component {
     products: [],
     editedProductID: null, // For viewing and editing an item
     newUser: false, // Whether to render sign in or sign up (toggles with button)
+    showCreateProduct: true, // Whether to render create product (toggles with button)
     wishlist: [] // Whether to render sign in or sign up (toggles with button)
   }
 
@@ -68,12 +69,12 @@ class App extends Component {
   }
 
   onBeginEditingProduct = (newID) => {
-    // if (newID === this.state.editedProductID) {
-    //   this.setState({ editedProductID: null })
-    // }
-    // else {
-    //   this.setState({ editedProductID: newID })
-    // }
+    if (newID === this.state.editedProductID) {
+      this.setState({ editedProductID: null })
+    }
+    else {
+      this.setState({ editedProductID: newID })
+    }
   }
 
   onUpdateEditedProduct = (productData) => {
@@ -118,8 +119,15 @@ class App extends Component {
       })
   }
 
+  toggleCreateNewProduct = () => {
+    this.setState((prevState) => {
+      const newShowCreateNewProduct = !prevState.showCreateProduct
+      return({showCreateProduct: newShowCreateNewProduct})
+    })
+  }
+
   render() {
-    const { decodedToken, products, newUser, editedProductID, wishlist } = this.state
+    const { decodedToken, products, newUser, showCreateProduct, editedProductID, wishlist } = this.state
     const signedIn = !!decodedToken
 
     return (
@@ -145,11 +153,15 @@ class App extends Component {
                   />
                 )}
               />
-              <h2>Create Product</h2>
-              <ProductForm
-                submitTitle='Create Product'
-                onSubmit={ this.onCreateProduct }
-              />
+              { showCreateProduct ? 
+                  <ProductForm
+                    submitTitle='Create Product'
+                    onSubmit={ this.onCreateProduct }
+                    showHeader={ true }
+                    toggleCreateNewProduct={ this.toggleCreateNewProduct }
+                  />
+                : <div className="new-product-button-wrapper"><button className="new-product-button" onClick={this.toggleCreateNewProduct}>Create new product</button></div>
+              }
               { (wishlist.length > 0) ? 
                   <Wishlist 
                     decodedToken={ decodedToken }  
@@ -198,6 +210,7 @@ class App extends Component {
         .catch((error) => {
           console.error('error loading products', error)
         })
+
     }
     else {
       this.setState({

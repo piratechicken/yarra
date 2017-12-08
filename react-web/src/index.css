@@ -99,7 +99,15 @@ button:hover {
   border-radius: 3px;
 }
 
-.product-form label, input, button {
+.product-form label, .product-form input, .product-form button {
+  font-size: 0.7rem;
+}
+
+.new-product-button-wrapper {
+  text-align: center;
+}
+.new-product-button {
+  margin: 10px auto;
   font-size: 0.7rem;
 }
 
